@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/pailhe/SGX/linux-sgx/linux/installer/bin/sgxsdk/SGX-Research'
+cd client && g++ main.c -o client
+cd server && g++  main.c -o server
+make: Leaving directory '/home/pailhe/SGX/linux-sgx/linux/installer/bin/sgxsdk/SGX-Research'
+ 
