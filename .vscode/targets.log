@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Jun 10 12:29:14 2022
+# Make data base, printed on Mon Jun 13 15:59:05 2022
 
 # Variables
 
@@ -25,7 +25,7 @@ SNAP_INSTANCE_KEY =
 # environment
 GJS_DEBUG_OUTPUT = stderr
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-7f6c7226-3a39-4ce5-aec3-d1db3726d9b9.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-7548f8f6-7fed-45cf-ad13-39ee4d12d674.sock
 # environment
 LC_NAME = ja_JP.UTF-8
 # environment
@@ -49,7 +49,7 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
 .VARIABLES := 
 # environment
-PWD = /home/pailhe/SGX/linux-sgx/linux/installer/bin/sgxsdk/SGX-Research
+PWD = /home/pailhe/Documents/serverBuild
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # environment
@@ -65,7 +65,7 @@ VSCODE_CODE_CACHE_PATH = /home/pailhe/.config/Code/CachedData/c3511e6c69bb39013c
 # environment
 LANG = C
 # environment
-XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.YD2SN1
+XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.AQ4GN1
 # default
 .LOADED := 
 # default
@@ -73,11 +73,11 @@ XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.YD2SN1
 # makefile
 MAKEFLAGS = pqrR
 # makefile
-CURDIR := /home/pailhe/SGX/linux-sgx/linux/installer/bin/sgxsdk/SGX-Research
+CURDIR := /home/pailhe/Documents/serverBuild
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # automatic
@@ -105,7 +105,7 @@ SNAP_REEXEC =
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 33135
+VSCODE_PID = 73315
 # environment
 XDG_SESSION_TYPE = wayland
 # automatic
@@ -113,7 +113,7 @@ XDG_SESSION_TYPE = wayland
 # environment
 BAMF_DESKTOP_FILE_HINT = /var/lib/snapd/desktop/applications/code_code.desktop
 # environment
-SESSION_MANAGER = local/pailhe-H470-HD3:@/tmp/.ICE-unix/1947,unix/pailhe-H470-HD3:/tmp/.ICE-unix/1947
+SESSION_MANAGER = local/pailhe-H470-HD3:@/tmp/.ICE-unix/2007,unix/pailhe-H470-HD3:/tmp/.ICE-unix/2007
 # automatic
 *F = $(notdir $*)
 # environment
@@ -161,7 +161,7 @@ LC_TIME = ja_JP.UTF-8
 # environment
 SNAP = /snap/code/97
 # environment
-INVOCATION_ID = 7aae3c9867f844d5b85c7256f1110499
+INVOCATION_ID = 20b7001fc66049af878ac4c67e83d67c
 # environment
 SNAP_REVISION = 97
 # environment
@@ -199,7 +199,7 @@ SNAP_ARCH = amd64
 # makefile
 .DEFAULT_GOAL := make
 # environment
-SYSTEMD_EXEC_PID = 2006
+SYSTEMD_EXEC_PID = 2045
 # environment
 DISPLAY = :0
 # environment
@@ -215,11 +215,11 @@ SNAP_DATA = /var/snap/code/97
 # environment
 SNAP_CONTEXT = -fna_Z6ElO6QSYHU7Ljzsbd_UyHjGFPmRz28x-eYHBSnWp2q2VdE
 # environment
-MANAGERPID = 1791
+MANAGERPID = 1812
 # environment
 LC_MEASUREMENT = ja_JP.UTF-8
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 33091
+GIO_LAUNCHED_DESKTOP_FILE_PID = 73272
 # environment
 _ = /snap/code/97/usr/share/code/code
 # environment
@@ -231,7 +231,7 @@ CFLAGS = -Wall -g
 # environment
 GDK_PIXBUF_MODULE_FILE = /home/pailhe/snap/code/common/.cache/gdk-pixbuf-loaders.cache
 # environment
-JOURNAL_STREAM = 8:32485
+JOURNAL_STREAM = 8:35169
 # environment
 XDG_SESSION_CLASS = user
 # environment
@@ -288,9 +288,9 @@ SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd
 
 # Directories
 
-# . (device 2050, inode 106305808): 8 files, no impossibilities.
+# . (device 2050, inode 103548490): 10 files, no impossibilities.
 
-# 8 files, no impossibilities in 1 directories.
+# 10 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -298,48 +298,18 @@ SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd
 
 # Files
 
-runserver:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 31):
-	cd server && ./server
-
-runclient:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 28):
-	cd client && ./client
-
-client:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 20):
-	cd client && gcc main.c -o client
-	cd client && ./client
-
 make:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 9):
-	cd client && $(CC) main.c -o client
-	cd server && $(CC)  main.c -o server
-
-source:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 13):
-	cd .. && source environment 
-	
+#  recipe to execute (from 'Makefile', line 8):
+	gcc server.c -o server
+	gcc client.c -o client
 
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-10 10:35:29.77411739
+#  Last modified 2022-06-13 15:54:12.995429453
 #  File has been updated.
 #  Successfully updated.
 
@@ -347,17 +317,8 @@ clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 24):
-	cd client && rm -rf client
-	cd server && rm -rf server
-
-server:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 16):
-	cd server && gcc main.c -o server
-	cd server && ./server
+#  recipe to execute (from 'Makefile', line 12):
+	rm -f server client
 
 # Not a target:
 .DEFAULT:
@@ -373,19 +334,19 @@ all:
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=11/1024=1%, Rehash=0, Collisions=0/21=0%
+# Load=6/1024=1%, Rehash=0, Collisions=0/16=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 18 / storage = 144 B / avg = 8 B
-# current buf: size = 8162 B / used = 144 B / count = 18 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 17 / storage = 143 B / avg = 8 B
+# current buf: size = 8162 B / used = 143 B / count = 17 / avg = 8 B
 
-# strcache performance: lookups = 31 / hit rate = 41%
+# strcache performance: lookups = 23 / hit rate = 26%
 # hash-table stats:
-# Load=18/8192=0%, Rehash=0, Collisions=0/31=0%
-# Finished Make data base on Fri Jun 10 12:29:14 2022
+# Load=17/8192=0%, Rehash=0, Collisions=0/23=0%
+# Finished Make data base on Mon Jun 13 15:59:05 2022
 
  
