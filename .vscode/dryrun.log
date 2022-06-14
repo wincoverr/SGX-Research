@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/pailhe/Documents/serverBuild'
+gcc server.c -o server
+gcc client.c -o client
+make: Leaving directory '/home/pailhe/Documents/serverBuild'
+ 
