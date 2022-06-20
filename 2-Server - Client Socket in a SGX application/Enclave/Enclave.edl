@@ -1,0 +1,12 @@
+enclave {
+    trusted {
+        public void ecall_test(void);
+        public void ecall_connexion([user_check]char pseudo[80],[user_check] char mdp[80]);
+        public void ecall_meteo([in]char city[80]);
+    };
+
+    untrusted {
+        void ocall_print([in, string] const char *str);
+    };
+
+};

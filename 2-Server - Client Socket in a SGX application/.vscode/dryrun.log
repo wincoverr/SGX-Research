@@ -1,0 +1,12 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/pailhe/SGX/linux-sgx/linux/installer/bin/sgxsdk/All-SGX/SGX-Research/2-Server - Client Socket in a SGX application'
+rm -f .config_* app enclave.so enclave.signed.so App/App.o App/Enclave_u.* Enclave/Enclave.o Enclave/Enclave_t.*
+touch .config_HW_RELEASE_x64
+cc -m64 -O2 -fPIC -Wno-attributes -IInclude -IApp -I/opt/intel/sgxsdk/include -DNDEBUG -UEDEBUG -UDEBUG -c App/App.c -o App/App.o
+echo "CC   <=  App/App.c"
+cc -m64 -O2 -nostdinc -fvisibility=hidden -fpie -fstack-protector -IEnclave -I/opt/intel/sgxsdk/include -I/opt/intel/sgxsdk/include/tlibc -I/opt/intel/sgxsdk/include/stlport -c Enclave/Enclave.c -o Enclave/Enclave.o
+echo "CC   <=  Enclave/Enclave.c"
+make: Leaving directory '/home/pailhe/SGX/linux-sgx/linux/installer/bin/sgxsdk/All-SGX/SGX-Research/2-Server - Client Socket in a SGX application'
+ 
+make: *** No rule to make target '/opt/intel/sgxsdk/bin/x64/sgx_edger8r', needed by 'App/Enclave_u.c'.
+

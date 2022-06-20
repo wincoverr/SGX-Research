@@ -1,0 +1,501 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 4.3
+# Built for x86_64-pc-linux-gnu
+# Copyright (C) 1988-2020 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+
+# Make data base, printed on Mon Jun 20 14:04:17 2022
+
+# Variables
+
+# environment
+GDK_BACKEND = x11
+# environment
+LC_ALL = C
+# environment
+GNOME_SHELL_SESSION_MODE = ubuntu
+# environment
+SSH_AGENT_LAUNCHER = gnome-keyring
+# makefile (from 'Makefile', line 6)
+SGX_DEBUG = 0
+# makefile (from 'Makefile', line 94)
+Enclave_C_Flags := -m64 -O2 -nostdinc -fvisibility=hidden -fpie -fstack-protector -IEnclave -I/opt/intel/sgxsdk/include -I/opt/intel/sgxsdk/include/tlibc -I/opt/intel/sgxsdk/include/stlport
+# makefile (from 'Makefile', line 89)
+Enclave_Include_Paths := -IEnclave -I/opt/intel/sgxsdk/include -I/opt/intel/sgxsdk/include/tlibc -I/opt/intel/sgxsdk/include/stlport
+# environment
+GJS_DEBUG_OUTPUT = stderr
+# makefile (from 'Makefile', line 4)
+SGX_MODE = HW
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-00f81876-ee9a-409c-b7c7-79665d7f70f0.sock
+# environment
+LC_NAME = ja_JP.UTF-8
+# environment
+LC_NUMERIC = ja_JP.UTF-8
+# environment
+VSCODE_CWD = /home/pailhe
+# makefile (from 'Makefile', line 3)
+SGX_SDK = /opt/intel/sgxsdk
+# makefile (from 'Makefile', line 48)
+App_Include_Paths := -IInclude -IApp -I/opt/intel/sgxsdk/include
+# environment
+LC_ADDRESS = ja_JP.UTF-8
+# default
+MAKE_COMMAND := make
+# environment
+QT_ACCESSIBILITY = 1
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# makefile (from 'Makefile', line 107)
+Signed_Enclave_Name := enclave.signed.so
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# default
+.VARIABLES := 
+# environment
+PWD = /home/pailhe/SGX/linux-sgx/linux/installer/bin/sgxsdk/All-SGX/SGX-Research/2-Server - Client Socket in a SGX application
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# environment
+XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
+# makefile (from 'Makefile', line 85)
+Crypto_Library_Name := sgx_tcrypto
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+VSCODE_LOG_STACK = false
+# automatic
+%F = $(notdir $%)
+# environment
+VSCODE_CODE_CACHE_PATH = /home/pailhe/.config/Code/CachedData/4af164ea3a06f701fe3e89a2bcbb421d2026b68f
+# environment
+LANG = C
+# environment
+XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.UGDHN1
+# default
+.LOADED := 
+# default
+.INCLUDE_DIRS = /usr/local/include /usr/include /usr/include
+# makefile
+MAKEFLAGS = pqrR
+# makefile
+CURDIR := /home/pailhe/SGX/linux-sgx/linux/installer/bin/sgxsdk/All-SGX/SGX-Research/2-Server - Client Socket in a SGX application
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+# environment
+LESSOPEN = | /usr/bin/lesspipe %s
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+MFLAGS = -pqrR
+# environment
+SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
+# default
+.SHELLFLAGS := -c
+# makefile (from 'Makefile', line 82)
+Trts_Library_Name := sgx_trts
+# environment
+WAYLAND_DISPLAY = wayland-0
+# environment
+XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# environment
+XDG_SESSION_DESKTOP = ubuntu
+# makefile (from 'Makefile', line 1)
+MAKEFILE_LIST := Makefile
+# automatic
+@F = $(notdir $@)
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# makefile (from 'Makefile', line 108)
+Enclave_Config_File := Enclave/Enclave.config.xml
+# environment
+VSCODE_PID = 183186
+# environment
+XDG_SESSION_TYPE = wayland
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# makefile (from 'Makefile', line 46)
+App_C_Files := App/App.c
+# environment
+SESSION_MANAGER = local/pailhe-H470-HD3:@/tmp/.ICE-unix/2140,unix/pailhe-H470-HD3:/tmp/.ICE-unix/2140
+# automatic
+*F = $(notdir $*)
+# makefile (from 'Makefile', line 106)
+Enclave_Name := enclave.so
+# environment
+CHROME_DESKTOP = code-url-handler.desktop
+# environment
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# environment
+GNOME_DESKTOP_SESSION_ID = this-is-deprecated
+# makefile
+SHELL = /bin/sh
+# default
+MAKECMDGOALS := all
+# environment
+XMODIFIERS = @im=ibus
+# environment
+GJS_DEBUG_TOPICS = JS ERROR;JS LOG
+# environment
+SHLVL = 0
+# environment
+MAKELEVEL := 0
+# environment
+IM_CONFIG_CHECK_ENV = 1
+# default
+MAKE = $(MAKE_COMMAND)
+# environment
+PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
+# default
+MAKEFILES := 
+# makefile (from 'Makefile', line 74)
+App_Name := app
+# environment
+LC_MONETARY = ja_JP.UTF-8
+# automatic
+^F = $(notdir $^)
+# makefile (from 'Makefile', line 83)
+Service_Library_Name := sgx_tservice
+# environment
+LC_TIME = ja_JP.UTF-8
+# makefile (from 'Makefile', line 21)
+SGX_LIBRARY_PATH := /opt/intel/sgxsdk/lib64
+# environment
+INVOCATION_ID = d2e5e9b18f0e483fbc8d3beb4d01301a
+# makefile (from 'Makefile', line 43)
+Urts_Library_Name := sgx_urts
+# environment
+VSCODE_LOG_NATIVE = false
+# environment
+USERNAME = pailhe
+# environment
+GNOME_SETUP_DISPLAY = :1
+# environment
+LC_TELEPHONE = ja_JP.UTF-8
+# environment
+LESSCLOSE = /usr/bin/lesspipe %s %s
+# automatic
+?F = $(notdir $?)
+# makefile (from 'Makefile', line 116)
+Build_Mode = HW_RELEASE
+# makefile (from 'Makefile', line 69)
+App_Link_Flags := -m64 -O2 -L/opt/intel/sgxsdk/lib64 -lsgx_urts -lpthread  -lsgx_uae_service
+# environment
+XDG_CURRENT_DESKTOP = Unity
+# environment
+LS_COLORS = 
+# automatic
++F = $(notdir $+)
+# environment
+DESKTOP_SESSION = ubuntu
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
+# 'override' directive
+GNUMAKEFLAGS := 
+# environment
+LOGNAME = pailhe
+# environment
+GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/code.desktop
+# makefile (from 'Makefile', line 72)
+App_C_Objects := App/App.o
+# makefile (from 'Makefile', line 35)
+SGX_COMMON_CFLAGS := -m64 -O2
+# makefile
+.DEFAULT_GOAL := all
+# environment
+SYSTEMD_EXEC_PID = 2162
+# environment
+DISPLAY = :0
+# environment
+USER = pailhe
+# environment
+GTK_MODULES = gail:atk-bridge
+# default
+MAKE_VERSION := 4.3
+# makefile (from 'Makefile', line 87)
+Enclave_C_Files := Enclave/Enclave.c
+# 'override' directive
+.SHELLSTATUS := 0
+# environment
+MANAGERPID = 1949
+# environment
+LC_MEASUREMENT = ja_JP.UTF-8
+# environment
+GIO_LAUNCHED_DESKTOP_FILE_PID = 183186
+# environment
+_ = /usr/share/code/code
+# environment
+LC_PAPER = ja_JP.UTF-8
+# environment
+XDG_RUNTIME_DIR = /run/user/1000
+# makefile (from 'Makefile', line 5)
+SGX_ARCH = x64
+# environment
+JOURNAL_STREAM = 8:24099
+# environment
+XDG_SESSION_CLASS = user
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+HOME = /home/pailhe
+# environment
+QT_IM_MODULE = ibus
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# environment
+VSCODE_IPC_HOOK = /run/user/1000/vscode-2e1814fc-1.68.0-main.sock
+# makefile (from 'Makefile', line 96)
+Enclave_Link_Flags := -m64 -O2 -Wl,--no-undefined -nostdlib -nodefaultlibs -nostartfiles -L/opt/intel/sgxsdk/lib64 -Wl,--whole-archive -lsgx_trts -Wl,--no-whole-archive -Wl,--start-group -lsgx_tstdc -lsgx_tcrypto -lsgx_tservice -Wl,--end-group -Wl,-Bstatic -Wl,-Bsymbolic -Wl,--no-undefined -Wl,-pie,-eenclave_entry -Wl,--export-dynamic -Wl,--defsym,__ImageBase=0 -Wl,--version-script=Enclave/Enclave.lds
+# environment
+IM_CONFIG_PHASE = 1
+# makefile (from 'Makefile', line 22)
+SGX_ENCLAVE_SIGNER := /opt/intel/sgxsdk/bin/x64/sgx_sign
+# default
+.RECIPEPREFIX := 
+# automatic
+<F = $(notdir $<)
+# default
+SUFFIXES := 
+# makefile (from 'Makefile', line 104)
+Enclave_C_Objects := Enclave/Enclave.o
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink load
+# environment
+XDG_MENU_PREFIX = gnome-
+# makefile (from 'Makefile', line 61)
+App_C_Flags := -m64 -O2 -fPIC -Wno-attributes -IInclude -IApp -I/opt/intel/sgxsdk/include -DNDEBUG -UEDEBUG -UDEBUG
+# makefile (from 'Makefile', line 23)
+ 
+SGX_EDGER8R := /opt/intel/sgxsdk/bin/x64/sgx_edger8r
+# environment
+GDMSESSION = ubuntu
+# environment
+LC_IDENTIFICATION = ja_JP.UTF-8
+# variable set hash-table stats:
+# Load=136/1024=13%, Rehash=0, Collisions=15/238=6%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 2050, inode 106824772): 11 files, no impossibilities.
+
+# 11 files, no impossibilities in 1 directories.
+
+# Implicit Rules
+
+# No implicit rules.
+
+# Files
+
+Enclave/Enclave_t.c: /opt/intel/sgxsdk/bin/x64/sgx_edger8r Enclave/Enclave.edl
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 185):
+	@cd Enclave && $(SGX_EDGER8R) --trusted ../Enclave/Enclave.edl --search-path ../Enclave --search-path $(SGX_SDK)/include
+	@echo "GEN  =>  $@"
+
+# Not a target:
+Enclave/Enclave.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+app: App/Enclave_u.o App/App.o
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 175):
+	@$(CC) $^ -o $@ $(App_Link_Flags)
+	@echo "LINK =>  $@"
+
+enclave.signed.so: enclave.so
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 201):
+	@$(SGX_ENCLAVE_SIGNER) sign -key Enclave/Enclave_private.pem -enclave $(Enclave_Name) -out $@ -config $(Enclave_Config_File)
+	@echo "SIGN =>  $@"
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-17 13:53:47.852861
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+App/App.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+clean:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 207):
+	@rm -f .config_* $(App_Name) $(Enclave_Name) client $(Signed_Enclave_Name) $(App_C_Objects) App/Enclave_u.* $(Enclave_C_Objects) Enclave/*.bc Enclave/Enclave_t.* symbols.lds
+																														
+
+# Not a target:
+/opt/intel/sgxsdk/bin/x64/sgx_edger8r:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+App/Enclave_u.c: /opt/intel/sgxsdk/bin/x64/sgx_edger8r Enclave/Enclave.edl
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 163):
+	@cd App && $(SGX_EDGER8R) --untrusted ../Enclave/Enclave.edl --search-path ../Enclave --search-path $(SGX_SDK)/include
+	@echo "GEN  =>  $@"
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+all: .config_HW_RELEASE_x64 app enclave.so
+#  Phony target (prerequisite of .PHONY).
+#  Command line target.
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/10=0%
+#  recipe to execute (from 'Makefile', line 133):
+	@echo "The project has been built in release hardware mode."
+	@echo "Please sign the $(Enclave_Name) first with your signing key before you run the $(App_Name) to launch and access the enclave."
+	@echo "To sign the enclave use the command:"
+	@echo "   $(SGX_ENCLAVE_SIGNER) sign -key <your key> -enclave $(Enclave_Name) -out <$(Signed_Enclave_Name)> -config $(Enclave_Config_File)"
+	@echo "You can also sign the enclave using an external signing tool."
+	@echo "To build the project in simulation mode set SGX_MODE=SIM. To build the project in prerelease mode set SGX_PRERELEASE=1 and SGX_MODE=HW."
+
+run: all
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+App/App.o: App/App.c
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 171):
+	@$(CC) $(App_C_Flags) -c $< -o $@
+	@echo "CC   <=  $<"
+
+App/Enclave_u.o: App/Enclave_u.c
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 167):
+	@$(CC) $(App_C_Flags) -c $< -o $@
+	@echo "CC   <=  $<"
+
+Enclave/Enclave_t.o: Enclave/Enclave_t.c
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 189):
+	@$(CC) $(Enclave_C_Flags) -c $< -o $@
+	@echo "CC   <=  $<"
+
+Enclave/Enclave.o: Enclave/Enclave.c
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 193):
+	@$(CC) $(Enclave_C_Flags) -c $< -o $@
+	@echo "CC   <=  $<"
+
+# Not a target:
+Enclave/Enclave.edl:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+.config_HW_RELEASE_x64:
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: ''
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := .config_HW_RELEASE_x64
+# automatic
+# * := 
+# automatic
+# < := 
+# automatic
+# + := 
+# automatic
+# % := 
+# automatic
+# ^ := 
+# automatic
+# ? := 
+# automatic
+# | := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=4/18=22%
+#  recipe to execute (from 'Makefile', line 179):
+	@rm -f .config_* $(App_Name) $(Enclave_Name) $(Signed_Enclave_Name) $(App_C_Objects) App/Enclave_u.* $(Enclave_C_Objects) Enclave/Enclave_t.*
+	@touch .config_$(Build_Mode)_$(SGX_ARCH)
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+.PHONY: all run clean
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+enclave.so: Enclave/Enclave_t.o Enclave/Enclave.o
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 197):
+	@$(CC) $^ -o $@ $(Enclave_Link_Flags)
+	@echo "LINK =>  $@"
+
+# files hash-table stats:
+# Load=21/1024=2%, Rehash=0, Collisions=0/59=0%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 1 (0) / strings = 32 / storage = 390 B / avg = 12 B
+# current buf: size = 8162 B / used = 390 B / count = 32 / avg = 12 B
+
+# strcache performance: lookups = 71 / hit rate = 54%
+# hash-table stats:
+# Load=32/8192=0%, Rehash=0, Collisions=0/71=0%
+# Finished Make data base on Mon Jun 20 14:04:17 2022
+
+ 
