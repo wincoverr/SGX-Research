@@ -1,0 +1,1 @@
+{"buildTargets":["App/Enclave_u.c","App/Enclave_u.h","App/Enclave_u.o","Enclave/Enclave_t.c","Enclave/Enclave_t.h","Enclave/Enclave_t.o","all","app","clean","enclave.signed.so","enclave.so","run"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}

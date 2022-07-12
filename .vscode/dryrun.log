@@ -1,6 +1,6 @@
 make --dry-run --always-make --keep-going --print-directory
-make: Entering directory '/home/pailhe/SGX/linux-sgx/linux/installer/bin/sgxsdk/All-SGX/SGX-Research'
-make: Leaving directory '/home/pailhe/SGX/linux-sgx/linux/installer/bin/sgxsdk/All-SGX/SGX-Research'
+make: Entering directory '/home/pailhe/linux-sgx/linux/installer/bin/sgxsdk/SGX-Research'
+make: Leaving directory '/home/pailhe/linux-sgx/linux/installer/bin/sgxsdk/SGX-Research'
  
 make: *** No targets specified and no makefile found.  Stop.
 
