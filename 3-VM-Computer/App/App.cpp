@@ -165,16 +165,24 @@ int initialize_enclave(void)
     return 0;
 }
 
-void ocall_empty_switchless(void) {}
-
 void ocall_print(const char *str)
 {
-    /* Proxy/Bridge will check the length and null-terminate
-     * the input string to prevent buffer overflow.
-     */
-    printf("%s", str);
+    std::cout << str << std::endl;
+    return;
 }
 
+void ocall_print_menu(void)
+{
+    std::cout << "Menu:" << std::endl;
+    cout << endl;
+    std::cout << "aaaaaaaaaaaaaa" << std::endl;
+    std::cout << "nnnnnnnnnnnnnn" << std::endl;
+    std::cout << "gggggggggggggg" << std::endl;
+    std::cout << "aaaaaaaaaaaaaa" << std::endl;
+    std::cout << "aaaaaaaaaaaaaa" << std::endl;
+    std::cout << "aaaaaaaaaaaaaa" << std::endl;
+    return;
+}
 
 static int vsock_connect()
 {
@@ -186,9 +194,8 @@ static int vsock_connect()
         .svm_family = AF_VSOCK,
         .svm_reserved1 = 0,
         .svm_port = PORT,
-        .svm_cid = 3,
+        .svm_cid = 3, //2
         .svm_flags = 0,
-
     };
 
     fd = socket(AF_VSOCK, SOCK_STREAM, 0);
@@ -210,10 +217,10 @@ static int vsock_connect()
 void write_file(int remote_fd)
 {
 
-    int n;
+    size_t n;
     char buffer[SIZE];
     int index = 0;
-    cout << "-----writting on file:" << endl;
+    // cout << "-----writing on file:" << endl;
     FILE *fp = fopen("rez.so", "w");
     while (1)
     {
@@ -234,32 +241,41 @@ void write_file(int remote_fd)
 
 static void main_loop(int remote_fd)
 {
-    fd_set rfds;
-    int nfds = remote_fd + 1;
     char buff[80];
     int fd = remote_fd;
-    int n;
-    char *str;
-    strcpy(str,"test");
+    char message[200];
+    int retval;
+    int finished = 0;
+
+    strcpy(message, "A menu is composed of a an entrée, a main course and a dessert");
     cout << "Welcome in Kyutech restaurant! " << endl;
     for (;;)
     {
         // loop where client choose the dish
         for (;;)
         {
-            cout << "aaaa" << endl;
+            ecall_print_char(global_eid, &retval, message, sizeof(message));
+            // entrée loop
+            while (finished == 0)
+            {
+                ecall_call_menu(global_eid, &retval);
+                strcpy(message, "What do you awant to take?");
+                cout << " => "  << endl;
+                sscanf(buff, "%80[^\n]");
+                strcpy(message, "Is there anything else you want?");
+                // get answer
+                // if (answer == 0)
+                finished = 1;
+            }
+            finished = 0;
+            // ecall_call_menu(global_eid, &retval);
 
-            ecall_print(global_eid,str);
-            strcpy(buff, "Menu : -rice - udon");
-
-            // create some ecall / ocall there
             break;
         }
         // MENU CHOOSEN HERE
         write(fd, buff, sizeof(buff));
 
         /*
-
         //Sending menu to server!
         //bzero(buff, sizeof(buff));
         //printf("Enter the string : ");
@@ -279,6 +295,7 @@ static void main_loop(int remote_fd)
 /* Application entry */
 int SGX_CDECL main(int argc, char *argv[])
 {
+
     (void)argc;
     (void)argv;
 
@@ -288,8 +305,7 @@ int SGX_CDECL main(int argc, char *argv[])
         return EXIT_FAILURE;
     }
     write_file(remote_fd);
-    cout << "MAIN LOOP" << endl;
-
+    // cout << "MAIN LOOP" << endl;
 
     /* Initialize the enclave */
     if (initialize_enclave() < 0)
@@ -298,12 +314,12 @@ int SGX_CDECL main(int argc, char *argv[])
         getchar();
         return -1;
     }
-
+    // cout << "Enclave created" << endl;
+    cout << endl;
     main_loop(remote_fd);
 
     sgx_destroy_enclave(global_eid);
     return EXIT_SUCCESS;
-
 }
 
 /*

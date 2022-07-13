@@ -1,3 +1,32 @@
 {
-    "makefile.extensionOutputFolder": "./.vscode"
+    "makefile.extensionOutputFolder": "./.vscode",
+    "files.associations": {
+        "system_error": "cpp",
+        "ostream": "cpp",
+        "iostream": "cpp",
+        "*.tcc": "cpp",
+        "cctype": "cpp",
+        "clocale": "cpp",
+        "cmath": "cpp",
+        "compare": "cpp",
+        "concepts": "cpp",
+        "cstdint": "cpp",
+        "cstdio": "cpp",
+        "cstdlib": "cpp",
+        "cwchar": "cpp",
+        "cwctype": "cpp",
+        "exception": "cpp",
+        "initializer_list": "cpp",
+        "iosfwd": "cpp",
+        "istream": "cpp",
+        "limits": "cpp",
+        "new": "cpp",
+        "numbers": "cpp",
+        "stdexcept": "cpp",
+        "streambuf": "cpp",
+        "string": "cpp",
+        "string_view": "cpp",
+        "type_traits": "cpp",
+        "typeinfo": "cpp"
+    }
 }

@@ -1,7 +1,4 @@
-------------------------
-Purpose of Switchless
-------------------------
-The project demonstrates how to use Fast OCalls provided by sgx_switchless.
+The project demonstrates how to use Fast OCalls
 
 ------------------------------------
 How to Build/Execute the Sample Code

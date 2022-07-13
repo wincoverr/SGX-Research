@@ -30,30 +30,25 @@
  */
 
 #include "Enclave_t.h"
-
-#include "Enclave.h"
-#include "Enclave_t.h"
+#include <sgx_trts.h>
 #include <string.h>
 
-
-void ecall_empty(void) {}
-void ecall_empty_switchless(void) {}
-
-/*
-void print_menu()
+int ecall_test(const char *message)
 {
-    char *str;
-    strcpy(str,"aezrzaerza");
-    ocall_print(str);
-    /*
-    cout << "aaaa" << endl;
-    strcpy(buff, "Menu : -rice - udon");
+    ocall_print(message);
+    return 31337;
+}
 
-    // create some ecall / ocall there
-    break;
-}*/
-
-void print(char *str)
+int ecall_print_char(const char *message, size_t message_len)
 {
-    ocall_print(str);
+
+    ocall_print(message);
+    return 31337;
+}
+
+int ecall_call_menu(void)
+{
+
+    ocall_print_menu();
+    return 31337;
 }
