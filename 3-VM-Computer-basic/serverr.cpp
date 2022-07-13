@@ -71,40 +71,7 @@ static int vsock_listen()
 	close(listen_fd);
 	return client_fd;
 }
-/*
-void send_file(int remote_fd)
-{
 
-	int n, bytes;
-	int j = 0;
-	string document;
-	FILE *f, *writee;
-	char buff[1000];
-
-	// cout << "aaaaaaaa";
-	// writee = fopen ("client.so", "wb");
-	f = fopen("client.so", "rb");
-	char *buffer[1000];
-
-	char const *pchar;
-	std::string s;
-	while (!feof(f))
-	{
-		sleep(0.1);
-		bytes = fread(buffer, 1, 1000, f);
-
-		s = std::to_string(bytes);
-		pchar = s.c_str();
-
-		cout << pchar << endl;
-		write(remote_fd, pchar, sizeof(pchar));
-		write(remote_fd, buffer, bytes);
-		j += 1;
-		cout << j << endl;
-	}
-	cout << "aaaaaaaa" << endl;
-	fclose(f);
-}*/
 void send_file(int remote_fd)
 {
 
