@@ -52,3 +52,23 @@ int ecall_call_menu(void)
     ocall_print_menu();
     return 31337;
 }
+
+int ecall_call_entry(void)
+{
+
+    ocall_print_entry();
+    return 31337;
+}
+
+int ecall_call_maindish(void)
+{
+
+    ocall_print_maindish();
+    return 31337;
+}
+int ecall_call_dessert(void)
+{
+
+    ocall_print_entry();
+    return 31337;
+}

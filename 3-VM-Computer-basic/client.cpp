@@ -47,7 +47,6 @@
 #include <pwd.h>
 #include <iostream>
 
-
 #ifdef _WIN32
 #include <Windows.h>
 #else
@@ -57,7 +56,6 @@
 using namespace std;
 #define PORT 7777
 #define SIZE 1024
-
 
 static int vsock_connect()
 {
@@ -129,11 +127,11 @@ static void main_loop(int remote_fd)
         // loop where client choose the dish
         for (;;)
         {
-          // ecall_print_char(global_eid, &retval, message, sizeof(message));
+            // ecall_print_char(global_eid, &retval, message, sizeof(message));
             // entrée loop
             while (finished == 0)
             {
-             //   ecall_call_menu(global_eid, &retval);
+                //   ecall_call_menu(global_eid, &retval);
                 strcpy(message, "What do you awant to take?");
                 cout << " => " << endl;
                 sscanf(buff, "%80[^\n]");
@@ -175,7 +173,6 @@ int main(int argc, char *argv[])
     cout << "Enclave created" << endl;
     cout << endl;
     main_loop(remote_fd);
-
 
     return 0;
 }

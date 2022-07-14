@@ -184,6 +184,45 @@ void ocall_print_menu(void)
     return;
 }
 
+void ocall_print_entry(void)
+{
+    std::cout << "Entry:" << std::endl;
+    cout << endl;
+    std::cout << "aaaaaaaaaaaaaa" << std::endl;
+    std::cout << "nnnnnnnnnnnnnn" << std::endl;
+    std::cout << "gggggggggggggg" << std::endl;
+    std::cout << "aaaaaaaaaaaaaa" << std::endl;
+    std::cout << "aaaaaaaaaaaaaa" << std::endl;
+    std::cout << "aaaaaaaaaaaaaa" << std::endl;
+    return;
+}
+
+void ocall_print_maindish(void)
+{
+    std::cout << "Main dish:" << std::endl;
+    cout << endl;
+    std::cout << "aaaaaaaaaaaaaa" << std::endl;
+    std::cout << "nnnnnnnnnnnnnn" << std::endl;
+    std::cout << "gggggggggggggg" << std::endl;
+    std::cout << "aaaaaaaaaaaaaa" << std::endl;
+    std::cout << "aaaaaaaaaaaaaa" << std::endl;
+    std::cout << "aaaaaaaaaaaaaa" << std::endl;
+    return;
+}
+
+void ocall_print_dessert(void)
+{
+    std::cout << "Dessert:" << std::endl;
+    cout << endl;
+    std::cout << "aaaaaaaaaaaaaa" << std::endl;
+    std::cout << "nnnnnnnnnnnnnn" << std::endl;
+    std::cout << "gggggggggggggg" << std::endl;
+    std::cout << "aaaaaaaaaaaaaa" << std::endl;
+    std::cout << "aaaaaaaaaaaaaa" << std::endl;
+    std::cout << "aaaaaaaaaaaaaa" << std::endl;
+    return;
+}
+
 static int vsock_connect()
 {
     int fd;
@@ -194,7 +233,7 @@ static int vsock_connect()
         .svm_family = AF_VSOCK,
         .svm_reserved1 = 0,
         .svm_port = PORT,
-        .svm_cid = 3, //2
+        .svm_cid = 3, // 2
         .svm_flags = 0,
     };
 
@@ -242,48 +281,75 @@ void write_file(int remote_fd)
 static void main_loop(int remote_fd)
 {
     char buff[80];
+    char order[200];
     int fd = remote_fd;
     char message[200];
-    int retval;
+    int retval, n;
     int finished = 0;
-
+    int checkValid = 0;
     strcpy(message, "A menu is composed of a an entrée, a main course and a dessert");
-    cout << "Welcome in Kyutech restaurant! " << endl;
+    cout << "\nWelcome in Kyutech restaurant! " << endl;
     for (;;)
     {
         // loop where client choose the dish
-        for (;;)
+
+        ecall_print_char(global_eid, &retval, message, sizeof(message));
+        // entrée loop
+        while (finished == 0)
         {
-            ecall_print_char(global_eid, &retval, message, sizeof(message));
-            // entrée loop
-            while (finished == 0)
-            {
-                ecall_call_menu(global_eid, &retval);
-                strcpy(message, "What do you awant to take?");
-                cout << " => "  << endl;
-                sscanf(buff, "%80[^\n]");
-                strcpy(message, "Is there anything else you want?");
-                // get answer
-                // if (answer == 0)
-                finished = 1;
-            }
-            finished = 0;
+            checkValid = 0;
             // ecall_call_menu(global_eid, &retval);
+            strcpy(message, " \nWhat entry do you want to take?");
+            cout << message << endl;
+            ecall_call_entry(global_eid, &retval);
+            cout << " => ";
+            bzero(buff, 200);
+            n = 0;
+            while ((buff[n++] = getchar()) != '\n')
+                ;
+            // check response
 
-            break;
+            strcpy(message, " \nWhat main dish do you want to take?");
+            cout << message << endl;
+            ecall_call_maindish(global_eid, &retval);
+            cout << " => ";
+            bzero(buff, 200);
+            n = 0;
+            while ((buff[n++] = getchar()) != '\n')
+                ;
+            // check response
+
+            strcpy(message, " \nWhat entry do you want to take?");
+            cout << message << endl;
+            ecall_call_dessert(global_eid, &retval);
+            cout << " => ";
+            bzero(buff, 200);
+            n = 0;
+            while ((buff[n++] = getchar()) != '\n')
+                ;
+            // check response
+
+            while (checkValid == 0)
+            {
+                strcpy(message, "Is this order fine for you? \n y:yes \n n : no \n =>");
+                cout << message;
+                bzero(buff, 200);
+                n = 0;
+                while ((buff[n++] = getchar()) != '\n')
+                    ;
+                cout << &buff[0] << endl;
+                if ((int)buff[0] == 121 || (int)buff[0] == 110)
+                    checkValid = 1;
+            }
+            if ((int)buff[0] == 121)
+                break;
         }
+        cout << "it's time to send data" << endl;
         // MENU CHOOSEN HERE
-        write(fd, buff, sizeof(buff));
+        strcpy(order, "1 2 3");
+        write(fd, order, sizeof(order));
 
-        /*
-        //Sending menu to server!
-        //bzero(buff, sizeof(buff));
-        //printf("Enter the string : ");
-        //n = 0;
-        //while ((buff[n++] = getchar()) != '\n')
-        //	;
-        write(fd, buff, sizeof(buff));
-        bzero(buff, sizeof(buff));*/
+        //---------------------
         read(fd, buff, sizeof(buff));
         printf("From Server : %s", buff);
 
@@ -304,8 +370,8 @@ int SGX_CDECL main(int argc, char *argv[])
     {
         return EXIT_FAILURE;
     }
-    write_file(remote_fd);
-    // cout << "MAIN LOOP" << endl;
+    // write_file(remote_fd);
+    //  cout << "MAIN LOOP" << endl;
 
     /* Initialize the enclave */
     if (initialize_enclave() < 0)
@@ -321,65 +387,3 @@ int SGX_CDECL main(int argc, char *argv[])
     sgx_destroy_enclave(global_eid);
     return EXIT_SUCCESS;
 }
-
-/*
-static int data(int in_fd, int out_fd)
-{
-    char buf[4096];
-    char *send_ptr = buf;
-    ssize_t nbytes;
-    ssize_t remaining;
-
-    nbytes = read(in_fd, buf, sizeof(buf));
-    if (nbytes <= 0)
-    {
-        return -1;
-    }
-
-    remaining = nbytes;
-    while (remaining > 0)
-    {
-        nbytes = write(out_fd, send_ptr, remaining);
-        if (nbytes < 0 && errno == EAGAIN)
-        {
-            nbytes = 0;
-        }
-        else if (nbytes <= 0)
-        {
-            return -1;
-        }
-
-        if (remaining > nbytes)
-        {
-            // Wait for fd to become writeable again
-            for (;;)
-            {
-                fd_set wfds;
-                FD_ZERO(&wfds);
-                FD_SET(out_fd, &wfds);
-                if (select(out_fd + 1, NULL, &wfds, NULL, NULL) < 0)
-                {
-                    if (errno == EINTR)
-                    {
-                        continue;
-                    }
-                    else
-                    {
-                        perror("select");
-                        return -1;
-                    }
-                }
-
-                if (FD_ISSET(out_fd, &wfds))
-                {
-                    break;
-                }
-            }
-        }
-
-        send_ptr += nbytes;
-        remaining -= nbytes;
-    }
-    return 0;
-}
-*/
