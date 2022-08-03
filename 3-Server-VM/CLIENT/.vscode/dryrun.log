@@ -1,0 +1,7 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/pailhe/linux-sgx/linux/installer/bin/sgxsdk/SGX-Research/3-aaaa'
+ 
+make: *** No rule to make target '/opt/intel/sgxsdk/bin/x64/sgx_edger8r', needed by 'App/Enclave_u.h'.
+
+make: Leaving directory '/home/pailhe/linux-sgx/linux/installer/bin/sgxsdk/SGX-Research/3-aaaa'
+ 
