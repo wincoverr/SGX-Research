@@ -45,7 +45,9 @@
 #include <linux/vm_sockets.h>
 #include <unistd.h>
 #include <pwd.h>
-#include <iostream>
+#include <iostream> // std::cout, std::endl
+#include <thread>   // std::this_thread::sleep_for
+#include <chrono>   // std::chrono::seconds
 
 #include <sgx_urts.h>
 #include <sgx_uswitchless.h>
@@ -171,29 +173,15 @@ void ocall_print(const char *str)
     return;
 }
 
-void ocall_print_menu(void)
-{
-    std::cout << "Menu:" << std::endl;
-    cout << endl;
-    std::cout << "aaaaaaaaaaaaaa" << std::endl;
-    std::cout << "nnnnnnnnnnnnnn" << std::endl;
-    std::cout << "gggggggggggggg" << std::endl;
-    std::cout << "aaaaaaaaaaaaaa" << std::endl;
-    std::cout << "aaaaaaaaaaaaaa" << std::endl;
-    std::cout << "aaaaaaaaaaaaaa" << std::endl;
-    return;
-}
-
 void ocall_print_entry(void)
 {
     std::cout << "Entry:" << std::endl;
     cout << endl;
-    std::cout << "aaaaaaaaaaaaaa" << std::endl;
-    std::cout << "nnnnnnnnnnnnnn" << std::endl;
-    std::cout << "gggggggggggggg" << std::endl;
-    std::cout << "aaaaaaaaaaaaaa" << std::endl;
-    std::cout << "aaaaaaaaaaaaaa" << std::endl;
-    std::cout << "aaaaaaaaaaaaaa" << std::endl;
+    std::cout << "1 - poached egg" << std::endl;
+    std::cout << "2 - Cucumber" << std::endl;
+    std::cout << "3 - Taro and chicken mince " << std::endl;
+    std::cout << "4 - Tofu Rissoles" << std::endl;
+    std::cout << "5 - miso soup" << std::endl;
     return;
 }
 
@@ -201,12 +189,12 @@ void ocall_print_maindish(void)
 {
     std::cout << "Main dish:" << std::endl;
     cout << endl;
-    std::cout << "aaaaaaaaaaaaaa" << std::endl;
-    std::cout << "nnnnnnnnnnnnnn" << std::endl;
-    std::cout << "gggggggggggggg" << std::endl;
-    std::cout << "aaaaaaaaaaaaaa" << std::endl;
-    std::cout << "aaaaaaaaaaaaaa" << std::endl;
-    std::cout << "aaaaaaaaaaaaaa" << std::endl;
+    std::cout << "1 - Udon" << std::endl;
+    std::cout << "2 - Okonomiyaki" << std::endl;
+    std::cout << "3 - Pork Cutlet" << std::endl;
+    std::cout << "4 - Karaage" << std::endl;
+    std::cout << "5 - Sushi" << std::endl;
+    std::cout << "6 - Kiritampo rolled with sliced pork" << std::endl;
     return;
 }
 
@@ -214,15 +202,34 @@ void ocall_print_dessert(void)
 {
     std::cout << "Dessert:" << std::endl;
     cout << endl;
-    std::cout << "aaaaaaaaaaaaaa" << std::endl;
-    std::cout << "nnnnnnnnnnnnnn" << std::endl;
-    std::cout << "gggggggggggggg" << std::endl;
-    std::cout << "aaaaaaaaaaaaaa" << std::endl;
-    std::cout << "aaaaaaaaaaaaaa" << std::endl;
-    std::cout << "aaaaaaaaaaaaaa" << std::endl;
+    std::cout << "1 - Parfait" << std::endl;
+    std::cout << "2 - Castella" << std::endl;
+    std::cout << "3 - Ice Cream" << std::endl;
+    std::cout << "4 - Wagashi" << std::endl;
+    std::cout << "5 - crepes" << std::endl;
     return;
 }
 
+int ocall_sendRequest(int entry, int fd, size_t message_len)
+{
+    char rep[80];
+    std::string s = std::to_string(entry);
+    char const *pchar = s.c_str();
+    write(fd, pchar, sizeof(pchar));
+    read(fd, rep, sizeof(rep));
+    std::string str(rep);
+    int repINT = atoi(str.c_str());
+    if (repINT == 1)
+    {
+        std::cout << "This entry can be made" << std::endl;
+    }
+    else
+    {
+        std::cout << "This entry can't be made; choose something else please" << std::endl;
+   
+    }
+    return repINT;
+}
 static int vsock_connect()
 {
     int fd;
@@ -233,8 +240,7 @@ static int vsock_connect()
         .svm_family = AF_VSOCK,
         .svm_reserved1 = 0,
         .svm_port = PORT,
-        .svm_cid = 3, // 2
-        .svm_flags = 0,
+        .svm_cid = 2, // 2
     };
 
     fd = socket(AF_VSOCK, SOCK_STREAM, 0);
@@ -256,45 +262,46 @@ static int vsock_connect()
 void send_file(int remote_fd)
 {
 
-	int n, bytes;
-	int j = 0;
-	FILE *f;
-	char buffer[1000];
-	char const *pchar;
-	f = fopen("enclave.signed.so", "rb");
-	cout << "-----writting on file:" << endl;
-	while (!feof(f))
-	{
-		bytes = fread(buffer, 1, 1000, f);
-		write(remote_fd, buffer, bytes);
+    int n, bytes;
+    int j = 0;
+    FILE *f;
+    char buffer[1000];
+    char const *pchar;
+    f = fopen("enclave.signed.so", "rb");
+    cout << "-----sending file:" << endl;
+    while (!feof(f))
+    {
+        bytes = fread(buffer, 1, 1000, f);
+        write(remote_fd, buffer, bytes);
 
-		j += 1;
-		//cout << j << endl;
-		//cout << buffer << endl;
-		std::this_thread::sleep_for(std::chrono::milliseconds(10));
-	}
+        j += 1;
+        // cout << j << endl;
+        // cout << buffer << endl;
+        std::this_thread::sleep_for(std::chrono::milliseconds(10));
+    }
 
-	fclose(f);
+    fclose(f);
 }
 
 static void main_loop(int remote_fd)
 {
-    char buff[80];
+    char buff[200];
     char order[200];
+    char buffOrder[80];
     int fd = remote_fd;
     char message[200];
     int retval, n;
-    int finished = 0;
+    int finished = 2;
     int checkValid = 0;
-    strcpy(message, "A menu is composed of a an entrée, a main course and a dessert");
+    int entry;
     cout << "\nWelcome in Kyutech restaurant! " << endl;
     for (;;)
     {
         // loop where client choose the dish
 
-        ecall_print_char(global_eid, &retval, message, sizeof(message));
-        // entrée loop
-        while (finished == 0)
+        // ecall_print_char(global_eid, &retval, message, sizeof(message));
+        //  entrée loop
+        while (finished == 2)
         {
             checkValid = 0;
             // ecall_call_menu(global_eid, &retval);
@@ -302,32 +309,14 @@ static void main_loop(int remote_fd)
             cout << message << endl;
             ecall_call_entry(global_eid, &retval);
             cout << " => ";
-            bzero(buff, 200);
+            bzero(buffOrder, 200);
             n = 0;
-            while ((buff[n++] = getchar()) != '\n')
+            while ((buffOrder[n++] = getchar()) != '\n')
                 ;
-            // check response
 
-            strcpy(message, " \nWhat main dish do you want to take?");
-            cout << message << endl;
-            ecall_call_maindish(global_eid, &retval);
-            cout << " => ";
-            bzero(buff, 200);
-            n = 0;
-            while ((buff[n++] = getchar()) != '\n')
-                ;
-            // check response
-
-            strcpy(message, " \nWhat entry do you want to take?");
-            cout << message << endl;
-            ecall_call_dessert(global_eid, &retval);
-            cout << " => ";
-            bzero(buff, 200);
-            n = 0;
-            while ((buff[n++] = getchar()) != '\n')
-                ;
-            // check response
-
+            entry = atoi(buffOrder);
+            ecall_requestEntryLeft(global_eid,&finished, entry, fd, sizeof(entry));
+/*
             while (checkValid == 0)
             {
                 strcpy(message, "Is this order fine for you? \n y:yes \n n : no \n =>");
@@ -342,11 +331,11 @@ static void main_loop(int remote_fd)
             }
             if ((int)buff[0] == 121)
                 break;
+                */
         }
         cout << "it's time to send data" << endl;
         // MENU CHOOSEN HERE
-        strcpy(order, "1 2 3");
-        write(fd, order, sizeof(order));
+        write(fd, buffOrder, sizeof(buffOrder));
 
         //---------------------
         read(fd, buff, sizeof(buff));
@@ -354,6 +343,7 @@ static void main_loop(int remote_fd)
 
         break;
     }
+    cout << endl;
     cout << "Bye bye" << endl;
 }
 
@@ -370,7 +360,6 @@ int SGX_CDECL main(int argc, char *argv[])
         return EXIT_FAILURE;
     }
     send_file(remote_fd);
-    //  cout << "MAIN LOOP" << endl;
 
     /* Initialize the enclave */
     if (initialize_enclave() < 0)
@@ -379,8 +368,9 @@ int SGX_CDECL main(int argc, char *argv[])
         getchar();
         return -1;
     }
-    // cout << "Enclave created" << endl;
+    cout << "Enclave created" << endl;
     cout << endl;
+    cout << "MAIN LOOP" << endl;
     main_loop(remote_fd);
 
     sgx_destroy_enclave(global_eid);

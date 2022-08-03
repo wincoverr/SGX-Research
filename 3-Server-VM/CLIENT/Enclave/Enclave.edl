@@ -36,22 +36,21 @@ enclave {
     from "sgx_tswitchless.edl" import *;
 
     trusted {
-        public int ecall_call_menu(void);
         public int ecall_call_entry(void);
         public int ecall_call_maindish(void);
         public int ecall_call_dessert(void);
-
         public int ecall_test([in]const char *message);
         public int ecall_print_char([in, size=message_len]const char *message,size_t message_len);
+        public int ecall_requestEntryLeft(int entry,int fd,size_t message_len );
 
     };
 
     untrusted {
         void ocall_print([in, string]const char *str);
-        void ocall_print_menu(void);
         void ocall_print_entry(void);
         void ocall_print_maindish(void);
         void ocall_print_dessert(void);
+        int ocall_sendRequest(int entry, int fd, size_t message_len);
 
     };
 };

@@ -46,12 +46,6 @@ int ecall_print_char(const char *message, size_t message_len)
     return 31337;
 }
 
-int ecall_call_menu(void)
-{
-
-    ocall_print_menu();
-    return 31337;
-}
 
 int ecall_call_entry(void)
 {
@@ -69,6 +63,13 @@ int ecall_call_maindish(void)
 int ecall_call_dessert(void)
 {
 
-    ocall_print_entry();
+    ocall_print_dessert();
     return 31337;
+}
+
+int ecall_requestEntryLeft(int entry,int fd,size_t message_len )
+{       
+    int rep;
+    ocall_sendRequest(&rep,entry,fd,message_len);
+    return rep;
 }
